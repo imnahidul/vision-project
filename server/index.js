@@ -26,6 +26,10 @@ app.use('/api/invoice',invoiceRoutes);
 app.use("/api/estimate", estimateRoutes);
 //app.use("/api/requisition", requisitionRoutes);
 
+app.get('/', (req, res) => {
+  res.send('Read to server')
+})
+
 
 app.listen(process.env.PORT, () =>{
 connectDB();

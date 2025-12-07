@@ -23,7 +23,7 @@ const [formData, setFormData] =useState({
  const fetchProducts = async () =>{
     
     try{
-  const response = await axios.get("http://localhost:3000/api/products",{
+  const response = await axios.get("https://vision-project-rho.vercel.app/api/products",{
     headers: {
       Authorization: `Bearer ${localStorage.getItem('pos-token')} `,
     },
@@ -80,7 +80,7 @@ const handleEdit = (product) =>{
   if(confirmDelete) {
   //if(window.confirm("Are You Sure want To Delete This supplier ?")) {
  try {
-   const response = await axios.delete(`http://localhost:3000/api/products/${id}`,
+   const response = await axios.delete(`https://vision-project-rho.vercel.app/api/products/${id}`,
            
              {
             headers: {
@@ -123,7 +123,7 @@ const handleSubmit = async (e) => {
       if(editProduct){
      try {
         const response = await axios.put(
-            `http://localhost:3000/api/products/${editProduct}`,
+            `https://vision-project-rho.vercel.app/api/products/${editProduct}`,
             formData,
             {
                 headers: {
@@ -162,7 +162,7 @@ const handleSubmit = async (e) => {
 
      try {
         const response = await axios.post(
-            "http://localhost:3000/api/products/add",
+            "https://vision-project-rho.vercel.app/api/products/add",
             formData,
             {
                 headers: {

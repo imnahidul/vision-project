@@ -13,19 +13,19 @@ import estimateRoutes from "./routes/estimate.js";
 //import requisitionRoutes from "./routes/requisition.js";
 
 const app = express();
-//app.use(cors());
-const allowedOrigin = 'http://localhost:5173/'; //  Replace with your actual frontend URL
+app.use(cors());
+// const allowedOrigin = 'http://localhost:5173/'; //  Replace with your actual frontend URL
 
-// Configuration options
-const corsOptions = {
-  origin: allowedOrigin,
-  // Optional: Add other options for security/functionality
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-  credentials: true, // Allow cookies/session headers
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed request headers
-};
+// // Configuration options
+// const corsOptions = {
+//   origin: allowedOrigin,
+//   // Optional: Add other options for security/functionality
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+//   credentials: true, // Allow cookies/session headers
+//   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed request headers
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/api/auth',authRoutes);
 app.use('/api/category',categoryRoutes);

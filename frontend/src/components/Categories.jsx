@@ -18,7 +18,7 @@ const Categories = () => {
   const fetchCategories = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("https://vision-project-rho.vercel.app/api/category", {
+      const response = await axios.get("http://localhost:3000/api/category", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("pos-token")} `,
         },
@@ -42,7 +42,7 @@ const Categories = () => {
     try {
       if (editCategory) {
         const response = await axios.put(
-          `https://vision-project-rho.vercel.app/api/category/${editCategory}`,
+          `http://localhost:3000/api/category/${editCategory}`,
           { categoryName, categoryDescription },
           {
             headers: {
@@ -62,7 +62,7 @@ const Categories = () => {
         }
       } else {
         const response = await axios.post(
-          "https://vision-project-rho.vercel.app/api/category/add",
+          "http://localhost:3000/api/category/add",
           { categoryName, categoryDescription },
           {
             headers: {
@@ -95,7 +95,7 @@ const Categories = () => {
 
     try {
       const response = await axios.delete(
-        `https://vision-project-rho.vercel.app/api/category/${id}`,
+        `http://localhost:3000/api/category/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("pos-token")}`,

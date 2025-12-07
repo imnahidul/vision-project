@@ -21,7 +21,7 @@ const CustomerProducts = () => {
   const fetchProducts = async () => {
     
     try{
-  const response = await axios.get("https://vision-project-rho.vercel.app/api/products",{
+  const response = await axios.get("http://localhost:3000/api/products",{
     headers: {
       Authorization: `Bearer ${localStorage.getItem('pos-token')} `,
     },
@@ -77,7 +77,7 @@ const CustomerProducts = () => {
   const handleSubmit = async (e) => {
       e.preventDefault();
       try{
-        const response = await axios.post("https://vision-project-rho.vercel.app/api/orders/add",orderData,{
+        const response = await axios.post("http://localhost:3000/api/orders/add",orderData,{
     headers: {
       Authorization: `Bearer ${localStorage.getItem('pos-token')} `,
     },

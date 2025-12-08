@@ -16,7 +16,7 @@ const [edit, setEdit] = useState(false);
 
 const fetchUser = async () => {
      try{
-  const response = await axios.get("https://vision-project-rho.vercel.app/api/users/profile",{
+  const response = await axios.get("https://vision-project-server.onrender.com/api/users/profile",{
     headers: {
       Authorization: `Bearer ${localStorage.getItem('pos-token')}`,
     },
@@ -44,7 +44,7 @@ const fetchUser = async () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try{
-        const response = await axios.put("https://vision-project-rho.vercel.app/api/users/profile",user,{
+        const response = await axios.put("https://vision-project-server.onrender.com/api/users/profile",user,{
     headers: {
       Authorization: `Bearer ${localStorage.getItem('pos-token')} `,
     },

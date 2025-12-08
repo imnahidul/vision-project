@@ -8,7 +8,7 @@ const Orders = () => {
    const fetchOrders = async () =>{
     
     try{
-  const response = await axios.get("https://vision-project-rho.vercel.app/api/orders",{
+  const response = await axios.get("https://vision-project-server.onrender.com/api/orders",{
     headers: {
       Authorization: `Bearer ${localStorage.getItem('pos-token')} `,
     },

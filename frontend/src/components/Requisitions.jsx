@@ -76,7 +76,7 @@
 //   const fetchRequisitions = async () => {
 //     setLoading(true);
 //     try {
-//       const res = await axios.get("https://vision-project-rho.vercel.app/api/requisition", {
+//       const res = await axios.get("https://vision-project-server.onrender.com/api/requisition", {
 //         headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
 //       });
 //       setRequisitions(res.data.requisitions || []);
@@ -225,11 +225,11 @@
 
 //     try {
 //       if (editId) {
-//         await axios.put(`https://vision-project-rho.vercel.app/api/requisition/${editId}`, payload, {
+//         await axios.put(`https://vision-project-server.onrender.com/api/requisition/${editId}`, payload, {
 //           headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
 //         });
 //       } else {
-//         await axios.post("https://vision-project-rho.vercel.app/api/requisition/add", payload, {
+//         await axios.post("https://vision-project-server.onrender.com/api/requisition/add", payload, {
 //           headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
 //         });
 //       }
@@ -246,7 +246,7 @@
 //   const handleDelete = async (id) => {
 //     if (!confirm("Delete this requisition permanently?")) return;
 //     try {
-//       await axios.delete(`https://vision-project-rho.vercel.app/api/requisition/${id}`, {
+//       await axios.delete(`https://vision-project-server.onrender.com/api/requisition/${id}`, {
 //         headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
 //       });
 //       fetchRequisitions();
@@ -785,7 +785,7 @@ const Requisitions = () => {
   const fetchRequisitions = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("https://vision-project-rho.vercel.app/api/requisition", {
+      const res = await axios.get("https://vision-project-server.onrender.com/api/requisition", {
         headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
       });
       setRequisitions(res.data.requisitions || []);
@@ -935,11 +935,11 @@ const Requisitions = () => {
 
     try {
       if (editId) {
-        await axios.put(`https://vision-project-rho.vercel.app/api/requisition/${editId}`, payload, {
+        await axios.put(`https://vision-project-server.onrender.com/api/requisition/${editId}`, payload, {
           headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
         });
       } else {
-        await axios.post("https://vision-project-rho.vercel.app/api/requisition/add", payload, {
+        await axios.post("https://vision-project-server.onrender.com/api/requisition/add", payload, {
           headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
         });
       }
@@ -955,7 +955,7 @@ const Requisitions = () => {
   const handleDelete = async (id) => {
     if (!confirm("Delete permanently?")) return;
     try {
-      await axios.delete(`https://vision-project-rho.vercel.app/api/requisition/${id}`, {
+      await axios.delete(`https://vision-project-server.onrender.com/api/requisition/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
       });
       fetchRequisitions();

@@ -88,7 +88,7 @@ const Estimates = () => {
   const fetchEstimates = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("https://vision-project-rho.vercel.app/api/estimate", {
+      const res = await axios.get("https://vision-project-server.onrender.com/api/estimate", {
         headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
       });
       setEstimates(res.data.estimates || []);
@@ -243,11 +243,11 @@ const Estimates = () => {
 
     try {
       if (editId) {
-        await axios.put(`https://vision-project-rho.vercel.app/api/estimate/${editId}`, payload, {
+        await axios.put(`https://vision-project-server.onrender.com/api/estimate/${editId}`, payload, {
           headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
         });
       } else {
-        await axios.post("https://vision-project-rho.vercel.app/api/estimate/add", payload, {
+        await axios.post("https://vision-project-server.onrender.com/api/estimate/add", payload, {
           headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
         });
       }
@@ -266,7 +266,7 @@ const Estimates = () => {
   const handleDelete = async (id) => {
     if (!window?.confirm || !window.confirm("Delete this estimate permanently?")) return;
     try {
-      await axios.delete(`https://vision-project-rho.vercel.app/api/estimate/${id}`, {
+      await axios.delete(`https://vision-project-server.onrender.com/api/estimate/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
       });
       await fetchEstimates();
@@ -822,7 +822,7 @@ export default Estimates;
 //   const fetchEstimates = async () => {
 //     setLoading(true);
 //     try {
-//       const res = await axios.get("https://vision-project-rho.vercel.app/api/estimate", {
+//       const res = await axios.get("https://vision-project-server.onrender.com/api/estimate", {
 //         headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
 //       });
 //       setEstimates(res.data.estimates || []);
@@ -962,11 +962,11 @@ export default Estimates;
 
 //     try {
 //       if (editId) {
-//         await axios.put(`https://vision-project-rho.vercel.app/api/estimate/${editId}`, payload, {
+//         await axios.put(`https://vision-project-server.onrender.com/api/estimate/${editId}`, payload, {
 //           headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
 //         });
 //       } else {
-//         await axios.post("https://vision-project-rho.vercel.app/api/estimate/add", payload, {
+//         await axios.post("https://vision-project-server.onrender.com/api/estimate/add", payload, {
 //           headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
 //         });
 //       }
@@ -983,7 +983,7 @@ export default Estimates;
 //   const handleDelete = async (id) => {
 //     if (!window.confirm("Delete this estimate permanently?")) return;
 //     try {
-//       await axios.delete(`https://vision-project-rho.vercel.app/api/estimate/${id}`, {
+//       await axios.delete(`https://vision-project-server.onrender.com/api/estimate/${id}`, {
 //         headers: { Authorization: `Bearer ${localStorage.getItem("pos-token")}` },
 //       });
 //       await fetchEstimates();

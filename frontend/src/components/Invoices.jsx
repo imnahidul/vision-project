@@ -58,7 +58,7 @@ const handleChange = (e) => {
   const fetchInvoices = async () => {
     setLoading(true);
 try{
-  const response = await axios.get("http://localhost:3000/api/invoice",{
+  const response = await axios.get("https://vision-project-rho.vercel.app/api/invoice",{
     headers: {
       Authorization: `Bearer ${localStorage.getItem('pos-token')} `,
     },
@@ -118,7 +118,7 @@ e.preventDefault();
 if(editInvoice){
      try {
         const response = await axios.put(
-            `http://localhost:3000/api/invoice/${editInvoice}`,
+            `https://vision-project-rho.vercel.app/api/invoice/${editInvoice}`,
             formData,
             {
                 headers: {
@@ -157,7 +157,7 @@ if(editInvoice){
 
      try {
         const response = await axios.post(
-            "http://localhost:3000/api/invoice/add",
+            "https://vision-project-rho.vercel.app/api/invoice/add",
             formData,
             {
                 headers: {
@@ -201,7 +201,7 @@ if(editInvoice){
   if(confirmDelete) {
   //if(window.confirm("Are You Sure want To Delete This Invoice ?")) {
  try {
-   const response = await axios.delete(`http://localhost:3000/api/invoice/${id}`,
+   const response = await axios.delete(`https://vision-project-rho.vercel.app/api/invoice/${id}`,
            
              {
             headers: {

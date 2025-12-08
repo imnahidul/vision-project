@@ -1,30 +1,89 @@
 
+// import jwt from "jsonwebtoken";
+// import User from "../models/User.js";
+
+// const authMiddleware = async (req , res, next) =>{
+
+//     try{
+//         const token = req.headers.authorization.split(" ")[1];
+//         if (!token){
+//             return res.status(401).json({success: false, message: "No token provided"});
+//         }
+//         const decoded =jwt.verify(token, process.env.JWT_SECRET);
+//         if (!decoded){
+//             return res.status(401).json({success: false, message: "Invalid token"});
+//         }
+
+//         const user = await User.findById({_id: decoded.id});
+//         if(!user){
+//             return res.status(401).json({success: false, message:"User not found"});
+//         }
+//         req.user = user;
+//         next();
+//     }catch(error){
+//         console.error("Enter in authMiddleware:", error);
+//         return res.status(500).json({success: false, message: "Internal server error in middleware"});
+//     }
+
+// }
+
+// export default authMiddleware;
+
+
+
+////////////////if i want to deploy Then need Below code////////8-12-25/////////
+
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
-const authMiddleware = async (req , res, next) =>{
+const authMiddleware = async (req, res, next) => {
+    try {
+        const authHeader = req.headers.authorization;
 
-    try{
-        const token = req.headers.authorization.split(" ")[1];
-        if (!token){
-            return res.status(401).json({success: false, message: "No token provided"});
-        }
-        const decoded =jwt.verify(token, process.env.JWT_SECRET);
-        if (!decoded){
-            return res.status(401).json({success: false, message: "Invalid token"});
+        if (!authHeader) {
+            return res.status(401).json({ 
+                success: false, 
+                message: "No authorization header provided" 
+            });
         }
 
-        const user = await User.findById({_id: decoded.id});
-        if(!user){
-            return res.status(401).json({success: false, message:"User not found"});
+        const token = authHeader.split(" ")[1];
+
+        if (!token) {
+            return res.status(401).json({
+                success: false,
+                message: "No token provided"
+            });
         }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        if (!decoded) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid token"
+            });
+        }
+
+        const user = await User.findById(decoded.id);
+
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
         req.user = user;
         next();
-    }catch(error){
-        console.error("Enter in authMiddleware:", error);
-        return res.status(500).json({success: false, message: "Internal server error in middleware"});
-    }
 
-}
+    } catch (error) {
+        console.error("Error in authMiddleware:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error in middleware"
+        });
+    }
+};
 
 export default authMiddleware;
